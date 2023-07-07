@@ -1,0 +1,19 @@
+<! DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação Teste de Alimentos </title>
+</head>
+
+
+<body>
+    <p> ALIMENTOS             QUANTIDADE       PREÇO </p>
+    {% for alimento in alimentos %}
+    <p> {{ alimento.nome }}        {{ alimento.quantidade }}         {{ alimento.preco )) </p>
+    {% endfor %}
+
+</body>
+
+</html>

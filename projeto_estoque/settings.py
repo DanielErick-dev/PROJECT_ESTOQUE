@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'app_produtos.apps.AppProdutosConfig'
+    'app_produtos.apps.AppProdutosConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'projeto_estoque.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,10 +74,15 @@ WSGI_APPLICATION = 'projeto_estoque.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# NOME DO USUÁRIO: usuario
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'banco_estoque',
+        'USER': 'usuario',
+        'PASSWORD': 'daniel292120',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
@@ -122,3 +127,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# NOME DE USUÁRIO DO SUPERUSUÁRIO: daniel
+# SENHA DO SUPERUSUÁRIO: daniel292120
+# EMAIL DO SUPERUSUÁRIO: danzzart007@gmail.com

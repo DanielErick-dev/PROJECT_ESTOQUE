@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import Alimentos
 
-# Create your views here.
+def exibir_alimentos(request):
+    alimentos = Alimentos.objects.all()
+    return render(request, 'index.html', {'alimentos': alimentos})
+
