@@ -1,17 +1,28 @@
+{% load static %}
 <! DOCTYPE html>
-
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicação Teste de Alimentos </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 
 
 <body>
-    <p> ALIMENTOS             QUANTIDADE       PREÇO </p>
+    <div class="variaveis-container">
+        <span class="variavel variavel-alimentos"> ALIMENTOS </span>
+        <span class="variavel variavel-quantidade"> QUANTIDADE</span>
+        <span class="variavel"> <span class="variavel-preco">PREÇO</span></span>
+    </div>
+
+
     {% for alimento in alimentos %}
-    <p> {{ alimento.nome }}        {{ alimento.quantidade }}         {{ alimento.preco )) </p>
+    <div class="item-container">
+        <span class="alimento-nome"> {{ alimento.nome }}   </span>
+        <span class="alimento-quantidade"> {{ alimento.quantidade }}   </span>
+        <span class="alimento-preco">  <span class="valor-preco"></span> {{ alimento.preco }} </span>
+    </div>
     {% endfor %}
 
 </body>

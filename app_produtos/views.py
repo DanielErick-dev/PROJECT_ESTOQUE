@@ -3,5 +3,12 @@ from .models import Alimentos
 
 def exibir_alimentos(request):
     alimentos = Alimentos.objects.all()
-    return render(request, 'index.html', {'alimentos': alimentos})
+
+
+    dicionario_alimentos = {
+        'alimentos': alimentos
+    }
+
+
+    return render(request, 'index.html', dicionario_alimentos)
 
