@@ -1,4 +1,6 @@
 {% load static %}
+{% load crispy_forms_tags %}
+
 <! DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,6 +27,12 @@
     </div>
     {% endfor %}
     <a href="{% url 'app_produtos:exibir_pagina_inicial' %}"> Voltar para página inicial</a>
+
+    <form method="post" action="{% url 'app_produtos:adicionar_alimento' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"> Adicionar Novo Alimento </button>
+    </form>
 </body>
 
 </html>
