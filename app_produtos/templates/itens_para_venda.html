@@ -1,0 +1,26 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<! DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Vizualização De Itens a Venda</title>
+</head>
+<body>
+    <ul>
+        <p> <u> LISTA DE PRODUTOS A VENDA </u></p>
+        {% for produto in produtos %}
+        <li> {{produto.nome}} </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'app_produtos:exibir_pagina_inicial' %}">Voltar Para Página Inicial</a>
+
+    <form method="post" action="{% url 'app_produtos:adicionar_pedido' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Adicionar Produto </button>
+    </form>
+    <a href="{% url 'app_produtos:finalizar_pedido' %}" class="btn-finalizar-pedido">Finalizar Pedido</a>
+
+</body>
+</html>
