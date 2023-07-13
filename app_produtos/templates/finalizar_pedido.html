@@ -13,6 +13,6 @@
     {% endfor %}
 
     <p> Valor Total: R$ {{ total }} </p>
-    <img src="{% static 'images/qrcode.jpg' %}" alt="QRcode">
+    <a href="{% url 'app_produtos:tela_de_pagamento' %}">Tela de Pagamento</a>
 </body>
 </html>

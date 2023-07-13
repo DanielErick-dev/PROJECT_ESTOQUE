@@ -1,0 +1,18 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<! DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagamento Com Cartão De Crédito</title>
+    <form method="post" action="{% url 'app_produtos:pagar_com_cartao' %}">
+        {% csrf_token %}
+        <input type="text" name="numero_cartao" placeholder="numero do cartao de crédito" required>
+        <br><br>
+        <button type="submit">Enviar </button>
+    </form>
+</head>
+<body>
+
+</body>
+</html>
