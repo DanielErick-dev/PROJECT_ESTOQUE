@@ -70,16 +70,33 @@ def adicionar_pedido(request):
 
 def finalizar_pedido(request):
     pedidos = request.session.get('pedidos', [])
-    total = 0
+    produtos_atendidos = []
+    produtos_nao_atendidos = []
+
     for pedido in pedidos:
         produto = Alimentos.objects.get(nome=pedido['produto'])
-        quantidade = int(pedido['quantidade'])
-        total += produto.preco * quantidade
+        quantidade_pedido = int(pedido['quantidade'])
 
-    contexto = {'pedidos': pedidos, 'total':total}
+    if quantidade_pedido <= produto.quantidade:
+        produtos_atendidos.append((produto, quantidade_pedido))
+    else:
+        produtos_nao_atendidos.append((produto,quantidade_pedido))
+
+    if produtos_nao_atendidos:
+        for produto,quantidade_pedido in produtos_nao_atendidos:
+            erro = f'Não há estoque disponivel para o produto {produto.nome}'
+            context = {'erro':erro, 'produto':produto, 'quantidade':quantidade_pedido}
+            return render(request, 'resultado_nao_esperado.html', context)
+
+    total = 0
+    for produto, quantidade_pedido in produtos_atendidos:
+        total += produto.preco * quantidade_pedido
+        produto.quantidade -= quantidade_pedido
+        produto.save()
+
     del request.session['pedidos']
+    contexto = {'pedidos':pedidos, 'total':total}
     return render(request, 'finalizar_pedido.html', contexto)
-
 def tela_de_pagamento(request):
     return render(request, 'tela_de_pagamento.html')
 

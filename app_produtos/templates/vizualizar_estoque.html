@@ -1,13 +1,51 @@
 {% load static %}
 {% load crispy_forms_tags %}
-
 <! DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicação Teste de Alimentos </title>
+    <title>Página De Estoque </title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/estoque-icon.png' %}">
+    <style>
+        .voltar{
+            text-decoration: none;
+            border: 2px solid black;
+            color: white;
+            background-color: #A9A9A9;
+            border-radius: 7px;
+            padding: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 1px #2F4F4F;
+
+        }
+        .voltar:hover{
+            background-color: #696969;
+            font-size: 16px;
+            padding: 6px;
+        }
+        .adicionar_novo_alimento{
+            border: 1px solid #800000;
+            border-radius: 7px;
+            background-color: #DEB887;
+            box-shadow: 1px 1px 0 1px #8B4513;
+            padding: 7px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all .136s easy-in-out;
+
+
+        }
+        .adicionar_novo_alimento:hover{
+            transform: translateX(5px) translateY(5px);
+            box-shadow: 2px 2px 0 1px #A0522D;
+            background-color: #A0522D;
+            color: white;
+            padding: 5px;
+        }
+    </style>
 </head>
 
 
@@ -26,12 +64,13 @@
         <span class="alimento-preco">  <span class="valor-preco"></span> {{ alimento.preco }} </span>
     </div>
     {% endfor %}
-    <a href="{% url 'app_produtos:exibir_pagina_inicial' %}"> Voltar para página inicial</a>
+
+    <a href="{% url 'app_produtos:exibir_pagina_inicial' %}" class="voltar"> Voltar para página inicial</a>
 
     <form method="post" action="{% url 'app_produtos:adicionar_alimento' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit"> Adicionar Novo Alimento </button>
+        <button type="submit" class="adicionar_novo_alimento"> Adicionar Novo Alimento </button>
     </form>
 
 </body>

@@ -1,10 +1,55 @@
 {% load static %}
 {% load crispy_forms_tags %}
 <! DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/vendas-icon-png-8.png' %}">
+
     <title>Página de Vizualização De Itens a Venda</title>
+    <style>
+        .btn-finalizar-pedido{
+            border-radius: 6px;
+            cursor: pointer;
+            background-color: #87CEEB;
+            border: 2px solid #6A5ACD;
+            padding: 3px;
+            box-shadow: 2px 2px 0 2px #191970;
+            text-decoration: none;
+            color: black;
+            letter-spacing: 0px;
+            transition: transform .3s easy;
+
+        }
+
+        .btn-finalizar-pedido:hover{
+            transform: translateX(10px) translateY(10px);
+
+        }
+
+
+        .botao_adicionar_produto{
+            background-color: #FF69B4;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: Verdana;
+            padding: 4px;
+            font-size: 14px;
+            color: white;
+            border: 2px solid #570029;
+            letter-spacing: 0px;
+            box-shadow: 2px 2px 0 1px #16000a;
+            transition: all .190s easy-in-out;
+        }
+
+        .botao_adicionar_produto:hover{
+            transform: translateX(5px) translateY(5px);
+            box-shadow: 7px 9px blue 0;
+
+        }
+    </style>
 </head>
 <body>
     <ul>
@@ -18,9 +63,13 @@
     <form method="post" action="{% url 'app_produtos:adicionar_pedido' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Adicionar Produto </button>
+        <button type="submit" class="botao_adicionar_produto">ADICIONAR PRODUTO</button>
     </form>
-    <a href="{% url 'app_produtos:finalizar_pedido' %}" class="btn-finalizar-pedido">Finalizar Pedido</a>
+    <br>
+    <a href="{% url 'app_produtos:finalizar_pedido' %}" class="btn-finalizar-pedido">FINALIZAR PEDIDO</a>
+    <br>
+    <br>
+    <p>Final Da Página</p>
 
 </body>
 </html>
