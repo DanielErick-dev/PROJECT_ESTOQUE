@@ -2,7 +2,7 @@ from django.urls import path
 from .views import exibir_estoque, exibir_pagina_inicial, adicionar_alimento,\
                    exibir_produtos_venda, processar_resposta, resultado_nao_esperado, adicionar_pedido,\
                 finalizar_pedido, tela_de_pagamento, processar_pagamento, pagar_com_cartao,\
-                pagar_com_dinheiro, pagar_com_pix, pagina_de_erro
+                pagar_com_dinheiro, pagar_com_pix, pagina_de_erro, remover_alimento
 
 
 
@@ -23,6 +23,8 @@ urlpatterns = [
     path('pagar_com_cartao', pagar_com_cartao, name='pagar_com_cartao'),
     path('pagar_com_dinheiro', pagar_com_dinheiro, name='pagar_com_dinheiro'),
     path('pagar_com_pix', pagar_com_pix, name='pagar_com_pix'),
-    path('pagina_de_erro', pagina_de_erro, name='pagina_de_erro')
+    path('pagina_de_erro', pagina_de_erro, name='pagina_de_erro'),
+    path('remover_alimento', remover_alimento, name='remover_alimento')
+
 
 ]

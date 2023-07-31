@@ -1,10 +1,13 @@
 {% load static %}
 {% load crispy_forms_tags %}
 <! DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finalizando Pedido</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/pedido.png' %}">
 </head>
 <body>
     {% for pedido in pedidos %}

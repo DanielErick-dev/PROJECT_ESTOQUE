@@ -1,11 +1,19 @@
 from django import forms
-from .models import Alimentos
+from .models import Alimentos, RemoverAlimentos
 
 class AlimentoForm(forms.ModelForm):
     class Meta:
         model = Alimentos
         fields = ['nome', 'quantidade', 'preco']
+        labels = {'nome': 'nome do alimento',
+                 'quantidade': 'quantidade do alimento',
+                 'preco': 'preço do alimento'}
 
+class RemoverAlimentoForm(forms.ModelForm):
+    class Meta:
+        model = RemoverAlimentos
+        fields = ['nome']
+        labels = {'nome': 'Nome do Alimento a Remover'}
 class PedidoForm(forms.ModelForm):
     class Meta:
         model = Alimentos

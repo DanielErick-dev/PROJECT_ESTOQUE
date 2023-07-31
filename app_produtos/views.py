@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Alimentos
-from .forms import AlimentoForm, PedidoForm, PagamentoForm
-from django.http import Http404, HttpResponse
+from .forms import AlimentoForm, PedidoForm, PagamentoForm, RemoverAlimentoForm
+from django.http import Http404
 pedidos = []
 def exibir_estoque(request):
 
@@ -29,6 +29,28 @@ def adicionar_alimento(request):
     else:
         form = AlimentoForm()
     return render(request, 'vizualizar_estoque.html', {'form': form})
+def remover_alimento(request):
+    if request.method == 'POST':
+        form = RemoverAlimentoForm(request.POST)
+        resposta = request.POST.get('nome', '')
+
+        if form.is_valid():
+            try:
+                produto = get_object_or_404(Alimentos, nome=resposta)
+                produto.delete()
+                return redirect('app_produtos:exibir_estoque')
+
+
+            except Http404:
+                return resultado_nao_esperado(request)
+        else:
+            form = RemoverAlimentoForm()
+    alimentos = Alimentos.objects.all()
+    form = AlimentoForm()
+    dicionario_alimentos = {
+        'alimentos': alimentos, 'form': form
+    }
+    return render(request, 'vizualizar_estoque.html', dicionario_alimentos)
 
 def exibir_produtos_venda(request):
     produtos = Alimentos.objects.all()
@@ -38,7 +60,7 @@ def exibir_produtos_venda(request):
 
 def processar_resposta(request):
     if request.method == 'POST':
-        resposta = request.POST.get('resposta', '')
+        resposta = request.POST.get('nome', '')
         try:
             produto = get_object_or_404(Alimentos, nome=resposta)
             return render(request, 'tela_de_compra.html', {'produto': produto})
