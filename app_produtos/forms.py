@@ -5,9 +5,9 @@ class AlimentoForm(forms.ModelForm):
     class Meta:
         model = Alimentos
         fields = ['nome', 'quantidade', 'preco']
-        labels = {'nome': 'nome do alimento',
-                 'quantidade': 'quantidade do alimento',
-                 'preco': 'preço do alimento'}
+        labels = {'nome': 'nome'.upper(),
+                 'quantidade': 'quantidade'.upper(),
+                 'preco': 'preço'.upper()}
 
 class RemoverAlimentoForm(forms.ModelForm):
     class Meta:
