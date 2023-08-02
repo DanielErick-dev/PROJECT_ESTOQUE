@@ -20,7 +20,22 @@
         .grupo-form label{
             margin-right: 10px;
         }
-
+        .remover-alimento {
+            border: 2px solid black;
+            border-radius: 6px;
+            font-size: 15px;
+            padding: 4px;
+            background-color: blue;
+            color: white;
+            box-shadow: 1px 1px 0 1px blue;
+            cursor: pointer;
+            transition: all .136 easy-in-out;
+        }
+        remover-alimento:hover{
+            tranform: translateX(5px) translateY(5px);
+            box-shadow: 1px 1px 0 1px green;
+            
+        }
         .grupo-form input[type="text"],
         .grupo-form input[type="number"] {
             background-color: #E0FFFF;
@@ -109,7 +124,7 @@
         {% csrf_token %}
         <label for="{{ form.nome.id_for_label }}">Nome do Alimento a Remover:</label>
         {{ form.nome }}
-        <button type="submit" class="remover_alimento">Remover Alimento</button>
+        <button type="submit" class="remover-alimento">Remover Alimento</button>
     </form>
     <br>
     <a href="{% url 'app_produtos:exibir_pagina_inicial' %}" class="voltar"> Voltar para página inicial</a>

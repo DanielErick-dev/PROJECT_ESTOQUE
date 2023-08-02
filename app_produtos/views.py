@@ -3,7 +3,12 @@ from .models import Alimentos
 from .forms import AlimentoForm, PedidoForm, PagamentoForm, RemoverAlimentoForm
 from django.http import Http404
 pedidos = []
+def landing_page(request):
+    return render(request, 'landing_page.html')
 def exibir_estoque(request):
+
+    alimentos = Alimentos.objects.filter(quantidade=0)
+    alimentos.delete()
 
     alimentos = Alimentos.objects.all()
     form = AlimentoForm()
@@ -99,6 +104,8 @@ def finalizar_pedido(request):
         produto = Alimentos.objects.get(nome=pedido['produto'])
         quantidade_pedido = int(pedido['quantidade'])
 
+
+
     if quantidade_pedido <= produto.quantidade:
         produtos_atendidos.append((produto, quantidade_pedido))
     else:
@@ -117,6 +124,7 @@ def finalizar_pedido(request):
         produto.save()
 
     del request.session['pedidos']
+
     contexto = {'pedidos':pedidos, 'total':total}
     return render(request, 'finalizar_pedido.html', contexto)
 def tela_de_pagamento(request):

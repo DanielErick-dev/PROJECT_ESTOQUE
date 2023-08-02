@@ -7,9 +7,22 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/icone_produtos.png' %}">
     <title>Página Inicial</title>
+    <style>
+        .ancora_landing_page{
+            text-decoration: none;
+            padding: 5px;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: gray;
+            color: white;
+            box-shadow: 1px 1px 0 1px gray;
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'app_produtos:exibir_estoque' %}"> Vizualizar Estoque</a>
-    <a href="{% url 'app_produtos:exibir_produtos_venda' %}"> Vizualizar Produtos Para Venda</a>
+    <p><a href="{% url 'app_produtos:exibir_estoque' %}"> Vizualizar Estoque</a></p>
+    <p><a href="{% url 'app_produtos:exibir_produtos_venda' %}"> Vizualizar Produtos Para Venda</a></p>
+    <p><a class="ancora_landing_page" href="{% url 'app_produtos:landing_page' %}">Landing Page</a></p>
 </body>
 </html>
