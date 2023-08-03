@@ -10,7 +10,16 @@
 </head>
 <body>
   <section>
-
+    <div class="circle"></div>
+    <header>
+        <a href="#"><img src="{% static 'images/logo_coca_cola.png' %}" alt="logo" class="logo"></a>
+        <nav class="navigation">
+            <ul>
+                <li><a href="{% url 'app_produtos:exibir_produtos_venda' %}">PRODUTOS</a></li>
+                <li><a href="{% url 'app_produtos:exibir_estoque' %}">ESTOQUE</a></li>
+            </ul>
+        </nav>
+    </header>
   </section>
 </body>
 </html>
