@@ -5,6 +5,9 @@ from django.http import Http404
 pedidos = []
 def landing_page(request):
     return render(request, 'landing_page.html')
+
+def tela_de_login(request):
+    return render(request, 'tela_de_login.html')
 def exibir_estoque(request):
 
     alimentos = Alimentos.objects.filter(quantidade=0)

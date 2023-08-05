@@ -12,14 +12,25 @@
   <section>
     <div class="circle"></div>
     <header>
-        <a href="#"><img src="{% static 'images/logo_coca_cola.png' %}" alt="logo" class="logo"></a>
+        <a href="#"><img src="{% static 'images/logo_planta.png' %}" alt="logo" class="logo"></a>
         <nav class="navigation">
             <ul>
                 <li><a href="{% url 'app_produtos:exibir_produtos_venda' %}">PRODUTOS</a></li>
                 <li><a href="{% url 'app_produtos:exibir_estoque' %}">ESTOQUE</a></li>
+                <li><a href="{% url 'app_produtos:tela_de_login' %}">LOGIN</a></li>
             </ul>
         </nav>
     </header>
+    <div class="container">
+        <div class="text">
+            <h2>THAT'S WHAT<br> <span>I LIKE</span></h2>
+            <p>Yes, i am going to do it</p>
+            <a href="#">VIEW ALL PRODUCTS</a>
+        </div>
+    </div>
+    <div class="box-img">
+        <img src="{% static 'images/img_coca_cola.png' %}" alt="imagem coca cola" width="30%" class="img">
+    </div>
   </section>
 </body>
 </html>

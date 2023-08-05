@@ -4,7 +4,7 @@
         box-sizing: border-box;
         background-color: black;
 
-    }
+}
 
 
 .section{
@@ -21,17 +21,23 @@
 
 .circle{
     position: absolute;
-    top: 40px;
-    left: 0;
+    top: 20px;
+    left: 50px;
     width: 100%;
     height: 100%;
     background-color: red;
-    clip-path: circle(45% at bottom right);
+    clip-path: circle(50% at bottom right);
+    z-index: 1;
 
 }
 
+.circle img{
+    width: 100px;
+    position: relative;
+    top: 0;
+}
+
 header{
-    position: absolute;
     top: 0px;
     left: 0;
     width: 100%;
@@ -44,9 +50,10 @@ header{
 
 header .logo{
     position: relative;
-    max-width: 150px;
-    top: -60px;
-    left: -50px;
+    max-width: 270px;
+    top: -50px;
+    left: -130px;
+
 }
 
 header .navigation{
@@ -76,23 +83,80 @@ header .navigation li a{
 
 header .navigation li a:hover{
     font-size: 25px;
-    color: green;
+    color: red;
+    max-width: 200px;
+    font-weight: 200;
+
+}
+
+.container{
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 
 
+.container .text{
+    position: relative;
+    max-width: 600px;
+    margin-right: 20px;
+
+}
+
+.container .text h2{
+    color: white;
+    font-size: 3em;
+    margin-bottom: 10px;
+    line-height: 2.5em;
+    font-weight: 700em;
+}
+
+.container .text h2 span{
+    font-size: 3.5em;
+    color: red;
+}
+
+.container .text p{
+    color: white;
+}
+
+.container .text a{
+    display: inline-block;
+    margin-top: 50px;
+    padding: 10px 25px;
+    background: red;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border-radius: 40px;
+    transition: 0.3s easy-in-out;
+}
 
 
-/*.navagation{
+.container .text a:hover{
+    transform: translateY(-10px);
+}
+
+
+
+.box-img{
     position: absolute;
-    top: 0;
-    right: 50px;
+    right: 120px;
+    transform: rotate(-15deg);
+    bottom: 0px;
+     /* Cor de fundo para a garrafa */
+    /*clip-path: circle(100% at bottom right); /* Recorte circular */
+    z-index: 2;
 }
 
-.logo{
-    width: 200px;
-    position: absolute;
-    top: -30px;
-    left: 30px;
+.box-img img{
+    width: 180px;
+    background-color: red;
+
+
 }
-*/

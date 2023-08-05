@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+
+}
+
+section{
+    position: relative;
+    margin: 0;
+    top: 0;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container .text h1{
+    position: relative;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    letters-spacing: 3px;
+    padding: 5px;
+    top: 10px;
+
+}
+
+.container .text .voltar{
+    position: relative;
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 40px;
+    box-shadow: 1px 1px 1px white;
+    font-size: 18px;
+    padding: 8px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    justify-content: space-between;
+    right: 500px;
+    top: 0;
+    transition: 0.3s easy-in-out:
+
+}
+
+.container .text .voltar:hover{
+    padding: 10px;
+    font-size: 20px;
+    transform: translateX(-10px);
+}
+
+
