@@ -10,6 +10,7 @@
 
     <title>Itens A Venda</title>
     <style>
+        /* ESTILIZAÇÃO DO BOTÃO DE FINALIZAR PEDIDO */
         .btn-finalizar-pedido{
             border-radius: 6px;
             cursor: pointer;
@@ -29,7 +30,7 @@
 
         }
 
-
+        /* ESTILIZAÇÃO BOTÃO ADICIONAR PRODUTO */
         .botao_adicionar_produto{
             background-color: #FF69B4;
             border-radius: 5px;
@@ -49,18 +50,9 @@
             box-shadow: 7px 9px blue 0;
 
         }
-        .container{
-            margin-left: 10px;
-            color: black;
-            font-weight: bold;
-            padding-right: 10px;
 
-        }
-        .container span{
-            margin-left: 30px;
-        }
+        /* ESTILIZAÇÃO DO BOTÃO DE COMPRA */
         .container .but-compra{
-            margin-left: 10px;
             border: 2px solid black;
             border-radius: 5px;
             padding: 2px 6px;
@@ -69,8 +61,13 @@
             box-shadow: 2px 2px 2px blue;
             transition: all 0.3s easy-in-out;
             cursor: pointer;
+
+
         }
 
+
+
+        /* ANIMAÇÃO DO BOTÃO DE COMPRA */
         .container .but-compra:hover{
             background-color: black;
             color: white;
@@ -78,8 +75,11 @@
             font-size: 24px;
             transform: translateX(2px) translateY(2px);
 
-            }
-            .p{
+        }
+
+
+        /* ESTILIZAÇÃO DO PARÁGRAFO */
+        .p{
             position: relative;
             text-align: center;
             justify-content: center;
@@ -88,8 +88,9 @@
             left: -50px;
             letter-spacing: 2px;
             font-family: Arial;
+            font-weight: bold;
+        }
 
-            font-weight: bold;}
     </style>
 </head>
 <body>
@@ -98,8 +99,10 @@
         {% for produto in produtos %}
             <li>
                 <div class="container">
-                    {{produto.nome}}
-                    <span class="span">R$ {{produto.preco}}</span>
+                    <div class="produto-info">
+                        <span class="nome-produto">{{ produto.nome }}</span>
+                        <span class="preco-produto">R$ {{ produto.preco }}</span>
+                    </div>
                     <button type="submit" class="but-compra">+</button>
                 </div>
             </li>
