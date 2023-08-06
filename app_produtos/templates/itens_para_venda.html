@@ -79,11 +79,22 @@
             transform: translateX(2px) translateY(2px);
 
             }
+            .p{
+            position: relative;
+            text-align: center;
+            justify-content: center;
+            color: black
+            font-size: 25px;
+            left: -50px;
+            letter-spacing: 2px;
+            font-family: Arial;
+
+            font-weight: bold;}
     </style>
 </head>
 <body>
     <ul>
-        <p> <u> LISTA DE PRODUTOS A VENDA </u></p>
+        <p class="p"> <u> LISTA DE PRODUTOS A VENDA </u></p>
         {% for produto in produtos %}
             <li>
                 <div class="container">
