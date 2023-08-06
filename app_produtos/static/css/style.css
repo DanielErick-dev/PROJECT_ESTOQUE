@@ -1,0 +1,75 @@
+/* CRIANDO PERSONALIZAÇÃO GERAL DA DIV PAI VARIAVEIS-CONTAINER */
+.variaveis-container{
+    display:flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* PERSONALIZAÇÃO ESPECIFICA DAS DIV FILHAS QUE ESTÃO DENTRO DE UMA TAG <SPAN> DENTRO DA DIV PAI */
+.variaveis-container span{
+    margin-right: 180px;
+
+}
+
+/* CRIANDO PERSONALIZAÇÃO GERAL DA DIV PAI ITEM-CONTAINER */
+.item-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* PERSONALIZAÇÃO ESPECIFICA DAS DIV FILHAS QUE ESTÃO DENTRO DE UMA TAG <SPAN> */
+.item-container span{
+    margin-right: 200px;
+    text-align: right;
+}
+
+/* PERSONALIZANDO AS 3 VÁRIAVEIS (ALIMENTO.NOME, QUANTIDADE E PRECO) DEIXANDO AS ALINHADAS */
+.alimento-nome{
+    display: inline-block;
+    width: 110px;
+}
+
+.alimento-quantidade{
+    display: inline-block;
+    width: 30px;
+}
+
+.alimento-preco{
+    display: inline-flex;
+    align-items: center;
+    width: 60px;
+}
+.alimento-preco .valor-preco{
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.alimento-preco .valor-preco::after{
+    content: 'R$';
+}
+
+
+.variavel{
+    padding-right: 10px;
+
+}
+
+.variavel-preco{
+    margin-left: -40px;
+
+}
+
+.variavel-quantidade{
+    margin-left: -15px;
+
+}
+
+.variavel-alimentos{
+    margin-left: 20px;
+
+}
+
+

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/vendas-icon-png-8.png' %}">
 
     <title>Itens A Venda</title>
@@ -49,16 +49,52 @@
             box-shadow: 7px 9px blue 0;
 
         }
+        .container{
+            margin-left: 10px;
+            color: black;
+            font-weight: bold;
+            padding-right: 10px;
+
+        }
+        .container span{
+            margin-left: 30px;
+        }
+        .container .but-compra{
+            margin-left: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 2px 6px;
+            font-size: 20px;
+            font-weight: 500;
+            box-shadow: 2px 2px 2px blue;
+            transition: all 0.3s easy-in-out;
+            cursor: pointer;
+        }
+
+        .container .but-compra:hover{
+            background-color: black;
+            color: white;
+            box-shadow: 3px 3px 2px white;
+            font-size: 24px;
+            transform: translateX(2px) translateY(2px);
+
+            }
     </style>
 </head>
 <body>
     <ul>
         <p> <u> LISTA DE PRODUTOS A VENDA </u></p>
         {% for produto in produtos %}
-        <li> {{produto.nome}} </li>
+            <li>
+                <div class="container">
+                    {{produto.nome}}
+                    <span class="span">R$ {{produto.preco}}</span>
+                    <button type="submit" class="but-compra">+</button>
+                </div>
+            </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'app_produtos:exibir_pagina_inicial' %}">Voltar Para Página Inicial</a>
+
 
     <form method="post" action="{% url 'app_produtos:adicionar_pedido' %}">
         {% csrf_token %}
@@ -66,10 +102,8 @@
         <button type="submit" class="botao_adicionar_produto">ADICIONAR PRODUTO</button>
     </form>
     <br>
-    <a href="{% url 'app_produtos:finalizar_pedido' %}" class="btn-finalizar-pedido">FINALIZAR PEDIDO</a>
-    <br>
-    <br>
-    <p>Final Da Página</p>
+    <p><a href="{% url 'app_produtos:finalizar_pedido' %}" class="btn-finalizar-pedido">FINALIZAR PEDIDO</a></p>
+    <p><a href="{% url 'app_produtos:exibir_pagina_inicial' %}">Voltar Para Página Inicial</a></p>
 
 </body>
 </html>
