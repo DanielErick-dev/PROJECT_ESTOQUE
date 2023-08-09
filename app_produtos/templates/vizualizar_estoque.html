@@ -25,17 +25,24 @@
             border: 2px solid black;
             border-radius: 6px;
             font-size: 15px;
-            padding: 4px;
-            background-color: blue;
+            padding: 5px;
+            letter-spacing: 2px;
+            background-color: #FF0000;
+            font-family: Arial;
             color: white;
-            box-shadow: 1px 1px 0 1px blue;
+            box-shadow: 2px 2px 4px white;
             cursor: pointer;
             transition: all .136 easy-in-out;
         }
         remover-alimento:hover{
-            tranform: translateX(5px) translateY(5px);
+            transform: translateX(5px) translateY(5px);
             box-shadow: 1px 1px 0 1px green;
             
+        }
+        remover-alimento:action{
+            background-color: gray;
+            font-size: 20px;
+            color: black;
         }
         .grupo-form input[type="text"],
         .grupo-form input[type="number"] {
@@ -46,6 +53,7 @@
             padding: 5px;
             box-shadow: 2px 2px 0 1px #87CEEB;
             font-size: 16px;
+
 
         }
         .voltar{
@@ -98,7 +106,35 @@
            background-color: black;
         }
 
+        .variaveis-container .variavel-alimentos{
+            border: 2px solid white;
+            box-shadow: 2px 2px 4px white;
+            padding: 5px;
+            letter-spacing: 1px;
+            user-select: none;
 
+        }
+        .variaveis-container .variavel-quantidade{
+            border: 2px solid white;
+                box-shadow: 2px 2px 4px white;
+                padding: 5px;
+                letter-spacing: 1px;
+                position: relative;
+                right: 30px;
+                user-select: none;
+        }
+        .variaveis-container .variavel-preco{
+            border: 2px solid white;
+                box-shadow: 2px 2px 4px white;
+                padding: 5px;
+                letter-spacing: 1px;
+                position: relative;
+                right: 30px;
+                user-select: none;
+        }
+        .item-container .alimento-nome{
+
+        }
     </style>
 </head>
 

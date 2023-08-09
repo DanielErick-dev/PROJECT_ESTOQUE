@@ -10,6 +10,8 @@
 
     <title>Itens A Venda</title>
     <style>
+
+
         /* ESTILIZAÇÃO DO BOTÃO DE FINALIZAR PEDIDO */
         .btn-finalizar-pedido{
             border-radius: 6px;
@@ -77,6 +79,12 @@
 
         }
 
+        .container .but-compra:active{
+            background-color: blue;
+            color: black;
+            font-size: 35p
+        }
+
 
         /* ESTILIZAÇÃO DO PARÁGRAFO */
         .p{
@@ -90,7 +98,25 @@
             font-family: Arial;
             font-weight: bold;
         }
+        .mensagem-adicionado{
+            position: fixed;
+            bottom: 600px;
+            right: 20px;
+            background-color: #00FF7F;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: "Times New Roman", Times, serif;
+            padding: 10px 20px;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
 
+
+
+
+        }
     </style>
 </head>
 <body>
@@ -103,12 +129,24 @@
                         <span class="nome-produto">{{ produto.nome }}</span>
                         <span class="preco-produto">R$ {{ produto.preco }}</span>
                     </div>
-                    <button type="submit" class="but-compra">+</button>
+                    <button type="button" class="but-compra" onclick="mostrarMensagem('Adicionado com sucesso')">+</button>
                 </div>
             </li>
         {% endfor %}
     </ul>
+    <script>
+        function mostrarMensagem(mensagem)  {
+            var mensagemElement = document.createElement('div');
+            mensagemElement.className = 'mensagem-adicionado';
+            mensagemElement.textContent = mensagem;
+            document.body.appendChild(mensagemElement);
 
+
+            setTimeout(function() {
+                document.body.removeChild(mensagemElement);
+           }, 1000);
+        }
+    </script>
 
     <form method="post" action="{% url 'app_produtos:adicionar_pedido' %}">
         {% csrf_token %}

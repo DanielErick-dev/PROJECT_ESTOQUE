@@ -15,9 +15,10 @@ def exibir_estoque(request):
     alimentos.delete()
 
     alimentos = Alimentos.objects.all()
+    ALIMENTOS = sorted(alimentos, key=lambda x: x.nome)
     form = AlimentoForm()
     dicionario_alimentos = {
-        'alimentos': alimentos, 'form': form
+        'alimentos': ALIMENTOS, 'form': form
     }
 
     return render(request, 'vizualizar_estoque.html', dicionario_alimentos)
@@ -63,8 +64,9 @@ def remover_alimento(request):
 
 def exibir_produtos_venda(request):
     produtos = Alimentos.objects.all()
+    PRODUTOS  = sorted(produtos, key=lambda x:x.nome)
     form = PedidoForm()
-    contexto = {'produtos': produtos, 'form':form}
+    contexto = {'produtos': PRODUTOS, 'form':form}
     return render(request, 'itens_para_venda.html', contexto)
 
 def processar_resposta(request):
