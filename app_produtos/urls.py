@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  exibir_estoque, exibir_pagina_inicial, adicionar_alimento,\
+from .views import  exibir_estoque, adicionar_alimento,\
                     exibir_produtos_venda, processar_resposta, resultado_nao_esperado, adicionar_pedido,\
                     finalizar_pedido, tela_de_pagamento, processar_pagamento, pagar_com_cartao,\
                     pagar_com_dinheiro, pagar_com_pix, pagina_de_erro, remover_alimento, landing_page,\
@@ -13,7 +13,7 @@ from .views import  exibir_estoque, exibir_pagina_inicial, adicionar_alimento,\
 
 app_name = 'app_produtos'
 urlpatterns = [
-    path('', exibir_pagina_inicial, name='exibir_pagina_inicial'),
+    path('', landing_page, name='landing_page'),
     path('exibir_estoque', exibir_estoque, name='exibir_estoque'),
     path('adicionar_alimento', adicionar_alimento, name='adicionar_alimento'),
     path('exibir_produtos_venda', exibir_produtos_venda, name='exibir_produtos_venda'),

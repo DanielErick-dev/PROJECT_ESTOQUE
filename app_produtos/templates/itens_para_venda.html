@@ -129,7 +129,7 @@
                         <span class="nome-produto">{{ produto.nome }}</span>
                         <span class="preco-produto">R$ {{ produto.preco }}</span>
                     </div>
-                    <button type="button" class="but-compra" onclick="mostrarMensagem('Adicionado com sucesso')">+</button>
+                    <button type="submit" class="but-compra" onclick="mostrarMensagem('Adicionado com sucesso')">+</button>
                 </div>
             </li>
         {% endfor %}
@@ -155,7 +155,7 @@
     </form>
     <br>
     <p><a href="{% url 'app_produtos:finalizar_pedido' %}" class="btn-finalizar-pedido">FINALIZAR PEDIDO</a></p>
-    <p><a href="{% url 'app_produtos:exibir_pagina_inicial' %}">Voltar Para Página Inicial</a></p>
+    <p><a href="{% url 'app_produtos:landing_page' %}">Voltar Para Página Inicial</a></p>
 
 </body>
 </html>

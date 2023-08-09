@@ -5,137 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#B0E0E6">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vizualizar_estoque.css' %}">
     <title>Página De Estoque </title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/estoque-icon.png' %}">
-    <style>
-        .grupo-form{
-            display: flex;
-            margin-bottom: 10px;
-            align-items: center;
-            color: white;
-
-        }
-
-        .grupo-form label{
-            margin-right: 10px;
-        }
-        .remover-alimento {
-            border: 2px solid black;
-            border-radius: 6px;
-            font-size: 15px;
-            padding: 5px;
-            letter-spacing: 2px;
-            background-color: #FF0000;
-            font-family: Arial;
-            color: white;
-            box-shadow: 2px 2px 4px white;
-            cursor: pointer;
-            transition: all .136 easy-in-out;
-        }
-        remover-alimento:hover{
-            transform: translateX(5px) translateY(5px);
-            box-shadow: 1px 1px 0 1px green;
-            
-        }
-        remover-alimento:action{
-            background-color: gray;
-            font-size: 20px;
-            color: black;
-        }
-        .grupo-form input[type="text"],
-        .grupo-form input[type="number"] {
-            background-color: #E0FFFF;
-            color: black;
-            border-radius: 6px;
-            border: 2px solid #4682B4;
-            padding: 5px;
-            box-shadow: 2px 2px 0 1px #87CEEB;
-            font-size: 16px;
-
-
-        }
-        .voltar{
-            text-decoration: none;
-            border: 2px solid black;
-            color: white;
-            background-color: #A9A9A9;
-            border-radius: 7px;
-            padding: 5px;
-            font-size: 15px;
-            cursor: pointer;
-            box-shadow: 2px 2px 0 1px #2F4F4F;
-
-        }
-        .voltar:hover{
-            background-color: #696969;
-            font-size: 16px;
-            padding: 6px;
-        }
-        .adicionar_novo_alimento{
-            border: 1px solid #800000;
-            border-radius: 7px;
-            background-color: #DEB887;
-            box-shadow: 1px 1px 0 1px #8B4513;
-            padding: 7px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all .136s easy-in-out;
-
-
-        }
-        .adicionar_novo_alimento:hover{
-            transform: translateX(5px) translateY(5px);
-            box-shadow: 2px 2px 0 1px #A0522D;
-            background-color: #A0522D;
-            color: white;
-            padding: 5px;
-        }
-        .P-remove{
-            color: white;
-
-        }
-        input[type="text"] {
-            background-color: black;
-            color: white;
-            border: 1px solid white;
-            padding: 5px;
-        }
-        *{
-           background-color: black;
-        }
-
-        .variaveis-container .variavel-alimentos{
-            border: 2px solid white;
-            box-shadow: 2px 2px 4px white;
-            padding: 5px;
-            letter-spacing: 1px;
-            user-select: none;
-
-        }
-        .variaveis-container .variavel-quantidade{
-            border: 2px solid white;
-                box-shadow: 2px 2px 4px white;
-                padding: 5px;
-                letter-spacing: 1px;
-                position: relative;
-                right: 30px;
-                user-select: none;
-        }
-        .variaveis-container .variavel-preco{
-            border: 2px solid white;
-                box-shadow: 2px 2px 4px white;
-                padding: 5px;
-                letter-spacing: 1px;
-                position: relative;
-                right: 30px;
-                user-select: none;
-        }
-        .item-container .alimento-nome{
-
-        }
-    </style>
+    <script src="{% static 'js/vizualizar_estoque.js' %}"></script>
 </head>
 
 <body>
@@ -170,16 +43,22 @@
             {{ form.preco }}
         </div>
         <br>
-        <button type="submit" class="adicionar_novo_alimento"> Adicionar Novo Alimento </button>
-    </form>
-    <form method="post" action="{% url 'app_produtos:remover_alimento' %}">
-        {% csrf_token %}
-        <label for="{{ form.nome.id_for_label }}" class="P-remove">Nome do Alimento a Remover:</label>
-        {{ form.nome }}
-        <button type="submit" class="remover-alimento">Remover Alimento</button>
+        <button type="submit" class="adicionar_novo_alimento" onclick="mostrarMensagemAdicionar('Produto Criado Com Sucesso')">ADICIONAR NOVO ALIMENTO</button>
     </form>
     <br>
-    <a href="{% url 'app_produtos:exibir_pagina_inicial' %}" class="voltar"> Voltar para página inicial</a>
+    <hr>
+    <div class="fundo-paragrafo">
+        <p class="paragrafo-remove">SEÇÃO DE REMOÇÃO/ALTERAÇÃO DO PRODUTO</p>
+    </div>
+    <hr>
+    <form method="post" action="{% url 'app_produtos:remover_alimento' %}">
+        {% csrf_token %}
+        <label for="{{ form.nome.id_for_label }}" class="remove">NOME DO ALIMENTO A SER REMOVIDO: </label>
+        {{ form.nome }}
+        <button type="submit" class="remover-alimento" onclick="mostrarMensagemRemover('removido com sucesso')">Remover Alimento</button>
+    </form>
+    <br>
+    <a href="{% url 'app_produtos:landing_page' %}" class="voltar"> Voltar para página inicial</a>
 </body>
 
 </html>

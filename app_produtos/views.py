@@ -23,11 +23,6 @@ def exibir_estoque(request):
 
     return render(request, 'vizualizar_estoque.html', dicionario_alimentos)
 
-def exibir_pagina_inicial(request):
-    alimentos = Alimentos.objects.all()
-    dicionario_alimentos = {'alimentos': alimentos}
-
-    return render(request, 'pagina_inicial.html', dicionario_alimentos)
 
 def adicionar_alimento(request):
     if request.method == 'POST':
@@ -46,7 +41,8 @@ def remover_alimento(request):
 
         if form.is_valid():
             try:
-                produto = get_object_or_404(Alimentos, nome=resposta)
+                produto = get_object_or_404(Alimentos, nome=resposta.upper())
+
                 produto.delete()
                 return redirect('app_produtos:exibir_estoque')
 

@@ -13,7 +13,7 @@ class RemoverAlimentoForm(forms.ModelForm):
     class Meta:
         model = RemoverAlimentos
         fields = ['nome']
-        labels = {'nome': 'Nome do Alimento a Remover'}
+        labels = {'nome'.upper(): 'Nome do Alimento a Remover'}
 class PedidoForm(forms.ModelForm):
     class Meta:
         model = Alimentos
