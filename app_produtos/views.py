@@ -28,7 +28,12 @@ def adicionar_alimento(request):
     if request.method == 'POST':
         form = AlimentoForm(request.POST)
         if form.is_valid():
-            form.save()
+            nome_produto = form.cleaned_data['nome']
+            nome_produto = nome_produto.upper()
+
+            alimento = form.save(commit=False)
+            alimento.nome = nome_produto
+            alimento.save()
             print('novo objeto salvo no banco de dados')
             return redirect('app_produtos:exibir_estoque')
     else:
