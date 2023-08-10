@@ -129,7 +129,12 @@
                         <span class="nome-produto">{{ produto.nome }}</span>
                         <span class="preco-produto">R$ {{ produto.preco }}</span>
                     </div>
-                    <button type="submit" class="but-compra" onclick="mostrarMensagem('Adicionado com sucesso')">+</button>
+                    <form method="post" action="{% url 'app_produtos:adicionar_pedido' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="produto_id" value="{{ produto.id }}">
+                        <button type="submit" class="but-compra" onclick="mostrarMensagem('Adicionado com sucesso')">+</button>
+                    </form>
+
                 </div>
             </li>
         {% endfor %}
@@ -144,15 +149,11 @@
 
             setTimeout(function() {
                 document.body.removeChild(mensagemElement);
-           }, 1000);
+           }, 3000);
         }
     </script>
 
-    <form method="post" action="{% url 'app_produtos:adicionar_pedido' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="botao_adicionar_produto">ADICIONAR PRODUTO</button>
-    </form>
+
     <br>
     <p><a href="{% url 'app_produtos:finalizar_pedido' %}" class="btn-finalizar-pedido">FINALIZAR PEDIDO</a></p>
     <p><a href="{% url 'app_produtos:landing_page' %}">Voltar Para Página Inicial</a></p>

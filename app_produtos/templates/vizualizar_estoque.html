@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <div class="icone-casinha">
+        <a href="{% url 'app_produtos:landing_page' %}"><img src="{% static 'images/icone_inicial.png' %}" alt="icone inicial de retorno"></a>
+    </div>
     <div class="variaveis-container">
         <span class="variavel-alimentos"> ALIMENTOS </span>
         <span class="variavel-quantidade"> QUANTIDADE</span>
@@ -57,8 +60,7 @@
         {{ form.nome }}
         <button type="submit" class="remover-alimento" onclick="mostrarMensagemRemover('removido com sucesso')">Remover Alimento</button>
     </form>
-    <br>
-    <a href="{% url 'app_produtos:landing_page' %}" class="voltar"> Voltar para página inicial</a>
+
 </body>
 
 </html>

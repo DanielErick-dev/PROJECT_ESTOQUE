@@ -81,17 +81,20 @@ def resultado_nao_esperado(request):
 
 def adicionar_pedido(request):
     if request.method == 'POST':
-        produto = request.POST.get('nome', '')
-        quantidade = request.POST.get('quantidade', '')
+        produto_id = request.POST.get('produto_id')
         try:
-            Produto = get_object_or_404(Alimentos, nome=produto)
-            if produto and quantidade:
-                pedido = {'produto': produto,
-                          'quantidade': quantidade}
-                pedidos = request.session.get('pedidos', [])
-                pedidos.append(pedido)
+            produto = get_object_or_404(Alimentos, id=produto_id)
+            pedidos = request.session.get('pedidos', [])
+            pedido_existente = False
 
-                request.session['pedidos'] = pedidos
+            for pedido in pedidos:
+                if pedido['produto'] == produto.nome:
+                    pedido['quantidade'] += 1
+                    pedido_existente = True
+                    break
+            if not pedido_existente:
+                pedidos.append({'produto': produto.nome, 'quantidade': 1})
+            request.session['pedidos'] = pedidos
         except Http404:
             return resultado_nao_esperado(request)
 
@@ -99,27 +102,28 @@ def adicionar_pedido(request):
 
 def finalizar_pedido(request):
     pedidos = request.session.get('pedidos', [])
+    for pedido in pedidos:
+        print(pedido['produto'])
     produtos_atendidos = []
     produtos_nao_atendidos = []
-
+    total = 0
     for pedido in pedidos:
         produto = Alimentos.objects.get(nome=pedido['produto'])
+
         quantidade_pedido = int(pedido['quantidade'])
 
-
-
-    if quantidade_pedido <= produto.quantidade:
-        produtos_atendidos.append((produto, quantidade_pedido))
-    else:
-        produtos_nao_atendidos.append((produto,quantidade_pedido))
+        if quantidade_pedido <= produto.quantidade:
+            produtos_atendidos.append((produto, quantidade_pedido))
+        else:
+            produtos_nao_atendidos.append((produto,quantidade_pedido))
 
     if produtos_nao_atendidos:
-        for produto,quantidade_pedido in produtos_nao_atendidos:
+        for produto, quantidade_pedido in produtos_nao_atendidos:
             erro = f'Não há estoque disponivel para o produto {produto.nome}'
             context = {'erro':erro, 'produto':produto, 'quantidade':quantidade_pedido}
             return render(request, 'resultado_nao_esperado.html', context)
 
-    total = 0
+
     for produto, quantidade_pedido in produtos_atendidos:
         total += produto.preco * quantidade_pedido
         produto.quantidade -= quantidade_pedido
