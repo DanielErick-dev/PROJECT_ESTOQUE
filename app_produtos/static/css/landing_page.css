@@ -77,6 +77,8 @@ header .navigation li a{
     font-weight: 500;
     font-size: 20px;
     margin-left: 100px;
+    box-shadow: 2px 2px 4px white;
+    border: white;
 
 
 }
@@ -135,6 +137,7 @@ header .navigation li a:hover{
     letter-spacing: 1px;
     border-radius: 40px;
     transition: 0.3s easy-in-out;
+    box-shadow: 2px 2px 4px white;
 }
 
 

@@ -7,7 +7,8 @@
 </head>
 <body>
     {% if produto.quantidade < quantidade %}
-        <h1> <b> {{ erro }} </b>  </h1>
+        <h1> <b> {{ erro }} {{ lista }}</b>  </h1>
+        <p> {{ lista }}</p>
     {% endif %}
     <div class="mensagem_de_erro"> <h1> {{ mensagem }} </h1> </div>
 

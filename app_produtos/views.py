@@ -82,7 +82,10 @@ def processar_resposta(request):
         return resultado_nao_esperado(request)
 def resultado_nao_esperado(request):
     mensagem = 'o item não está disponivel no estoque ou a digitação do produto está errada'
-    return render(request, 'resultado_nao_esperado.html', {'mensagem': mensagem})
+    request.session.flush()
+
+
+    return render(request, 'resultado_nao_esperado.html', {'mensagem': mensagem, 'lista': lista})
 
 def adicionar_pedido(request):
     if request.method == 'POST':
@@ -106,6 +109,7 @@ def adicionar_pedido(request):
     return redirect('app_produtos:exibir_produtos_venda')
 
 def finalizar_pedido(request):
+
     pedidos = request.session.get('pedidos', [])
     for pedido in pedidos:
         print(pedido['produto'])
