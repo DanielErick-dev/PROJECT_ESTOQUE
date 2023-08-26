@@ -26,6 +26,7 @@ def exibir_estoque(request):
 
 
 def adicionar_alimento(request):
+    validacao_ok = False
     if request.method == 'POST':
         form = AlimentoForm(request.POST)
         if form.is_valid():
@@ -41,12 +42,15 @@ def adicionar_alimento(request):
                 if len(alimentos) > 0:
                     igualdade = True
                     print('o produto em questão já existe no banco de dados')
+                    print(validacao_ok)
             except Error:
                 print('erro para acessar o banco de dados')
 
             if igualdade is False:
                 alimento.save()
                 print('novo objeto salvo no banco de dados')
+                validacao_ok = True
+                print(validacao_ok)
 
 
 
@@ -55,7 +59,7 @@ def adicionar_alimento(request):
             return redirect('app_produtos:exibir_estoque')
     else:
         form = AlimentoForm()
-    return render(request, 'vizualizar_estoque.html', {'form': form})
+    return render(request, 'vizualizar_estoque.html', {'form': form, 'validacao_ok': validacao_ok})
 def remover_alimento(request):
     if request.method == 'POST':
         form = RemoverAlimentoForm(request.POST)

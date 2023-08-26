@@ -9,6 +9,7 @@
     <title>Página De Estoque </title>
     <link rel="icon" type="image/png" href="{% static 'images/estoque-icon.png' %}">
     <script src="{% static 'js/vizualizar_estoque.js' %}"></script>
+
 </head>
 
 <body>
@@ -51,6 +52,26 @@
                 {{ form.preco }}
             </div>
             <br>
+            <script>
+                var validacao_ok = {{ validacao_ok|yesno:"true,false" }};
+                console.log(validacao_ok);
+                function mostrarMensagemAdicionar(mensagem)  {
+                if (validacao_ok) {
+                    console.log('testando validação')
+                    var mensagemElement = document.createElement('div');
+                    mensagemElement.className = 'mensagem-adicionado';
+                    mensagemElement.textContent = mensagem;
+                    document.body.appendChild(mensagemElement);
+
+
+                    setTimeout(function() {
+                        document.body.removeChild(mensagemElement);
+                   }, 9000);
+                } else {
+                    console.log('validação não foi executada corretamente')
+                }
+            }
+            </script>
             <button type="submit" class="adicionar_novo_alimento" onclick="mostrarMensagemAdicionar('Produto Criado Com Sucesso')">ADICIONAR NOVO ALIMENTO</button>
         </form>
     </div>
@@ -60,14 +81,20 @@
     <div class="fundo-paragrafo">
         <p>SEÇÃO DE REMOÇÃO/ALTERAÇÃO DO PRODUTO</p>
     </div>
+
     <hr>
     <div class="container-remocao">
         <form method="post" action="{% url 'app_produtos:remover_alimento' %}">
-        {% csrf_token %}
-        <label for="{{ form.nome.id_for_label }}" class="remove">NOME DO ALIMENTO A SER REMOVIDO: </label>
-        {{ form.nome }}
-        <button type="submit" class="remover-alimento" onclick="mostrarMensagemRemover('removido com sucesso')">Remover Alimento</button>
-    </form>
+            {% csrf_token %}
+            <label for="{{ form.nome.id_for_label }}" class="remove">NOME DO ALIMENTO A SER REMOVIDO: </label>
+            {{ form.nome }}
+
+            <button type="submit" class="remover-alimento" onclick="mostrarMensagemRemover('removido com sucesso')">Remover Alimento</button>
+
+        </form>
+        <div class="line">
+
+        </div>
     </div>
 
 
