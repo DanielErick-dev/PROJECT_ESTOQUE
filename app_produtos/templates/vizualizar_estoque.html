@@ -12,54 +12,61 @@
 </head>
 
 <body>
-    <div class="icone-casinha">
-        <a href="{% url 'app_produtos:landing_page' %}"><img src="{% static 'images/icone_inicial.png' %}" alt="icone inicial de retorno"></a>
-    </div>
-    <div class="variaveis-container">
-        <span class="variavel-alimentos"> ALIMENTOS </span>
-        <span class="variavel-quantidade"> QUANTIDADE</span>
-        <span class="variavel"> <span class="variavel-preco">PREÇO</span></span>
+    <nav class="nav-bar">
+        <h1>BEM VINDO A PÁGINA DE ESTOQUE</h1>
+        <div class="box-img">
+            <a href="{% url 'app_produtos:landing_page' %}">
+                <img src="{% static 'images/icone_inicial.png' %}" alt="icone inicial de casinha">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container-alimentos">
+        <h4> alimento quantidade preço</h4>
+        {% for alimento in alimentos %}
+        <p>
+            <span class="nome-alimento"> {{ alimento.nome }}</span>
+            <span class="quantidade-alimento"> {{ alimento.quantidade }}</span>
+            <span class="preco-alimento"> {{ alimento.preco }}</span>
+        </p>
+        {% endfor %}
     </div>
 
 
-    {% for alimento in alimentos %}
-    <div class="item-container">
-        <span class="alimento-nome"> {{ alimento.nome }}   </span>
-        <span class="alimento-quantidade"> {{ alimento.quantidade }}   </span>
-        <span class="alimento-preco">  <span class="valor-preco"></span> {{ alimento.preco }} </span>
-    </div>
-    {% endfor %}
 
-    <br>
-    <form method="post" action="{% url 'app_produtos:adicionar_alimento' %}">
-        {% csrf_token %}
-        <div class="grupo-form">
-            <label for="{{ form.nome.id_for_label }}">NOME:</label>
-            {{ form.nome }}
-        </div>
-        <div class="grupo-form">
-            <label for="{{ form.quantidade.id_for_label }}">QUANTIDADE:</label>
-            {{ form.quantidade }}
-        </div>
-        <div class="grupo-form">
-            <label for="{{ form.preco.id_for_label }}">PREÇO:</label>
-            {{ form.preco }}
-        </div>
-        <br>
-        <button type="submit" class="adicionar_novo_alimento" onclick="mostrarMensagemAdicionar('Produto Criado Com Sucesso')">ADICIONAR NOVO ALIMENTO</button>
-    </form>
-    <br>
-    <hr>
-    <div class="fundo-paragrafo">
-        <p class="paragrafo-remove">SEÇÃO DE REMOÇÃO/ALTERAÇÃO DO PRODUTO</p>
+
+    <div class="container-formulario">
+        <form method="post" action="{% url 'app_produtos:adicionar_alimento' %}">
+            {% csrf_token %}
+            <div class="grupo-form">
+                <label for="{{ form.nome.id_for_label }}">NOME:</label>
+                {{ form.nome }}
+            </div>
+            <div class="grupo-form">
+                <label for="{{ form.quantidade.id_for_label }}">QUANTIDADE:</label>
+                {{ form.quantidade }}
+            </div>
+            <div class="grupo-form">
+                <label for="{{ form.preco.id_for_label }}">PREÇO:</label>
+                {{ form.preco }}
+            </div>
+            <br>
+            <button type="submit" class="adicionar_novo_alimento" onclick="mostrarMensagemAdicionar('Produto Criado Com Sucesso')">ADICIONAR NOVO ALIMENTO</button>
+        </form>
     </div>
-    <hr>
-    <form method="post" action="{% url 'app_produtos:remover_alimento' %}">
-        {% csrf_token %}
-        <label for="{{ form.nome.id_for_label }}" class="remove">NOME DO ALIMENTO A SER REMOVIDO: </label>
-        {{ form.nome }}
-        <button type="submit" class="remover-alimento" onclick="mostrarMensagemRemover('removido com sucesso')">Remover Alimento</button>
-    </form>
+
+<!--    <br>-->
+<!--    <hr>-->
+<!--    <div class="fundo-paragrafo">-->
+<!--        <p class="paragrafo-remove">SEÇÃO DE REMOÇÃO/ALTERAÇÃO DO PRODUTO</p>-->
+<!--    </div>-->
+<!--    <hr>-->
+<!--    <form method="post" action="{% url 'app_produtos:remover_alimento' %}">-->
+<!--        {% csrf_token %}-->
+<!--        <label for="{{ form.nome.id_for_label }}" class="remove">NOME DO ALIMENTO A SER REMOVIDO: </label>-->
+<!--        {{ form.nome }}-->
+<!--        <button type="submit" class="remover-alimento" onclick="mostrarMensagemRemover('removido com sucesso')">Remover Alimento</button>-->
+<!--    </form>-->
 
 </body>
 
