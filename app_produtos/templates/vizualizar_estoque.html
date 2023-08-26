@@ -43,7 +43,7 @@
                 {{ form.nome }}
             </div>
             <div class="grupo-form">
-                <label for="{{ form.quantidade.id_for_label }}">QUANTIDADE:</label>
+                <label for="{{ form.quantidade.id_for_label }}" id="id_quantidade">QUANTIDADE:</label>
                 {{ form.quantidade }}
             </div>
             <div class="grupo-form">
@@ -55,18 +55,21 @@
         </form>
     </div>
 
-<!--    <br>-->
-<!--    <hr>-->
-<!--    <div class="fundo-paragrafo">-->
-<!--        <p class="paragrafo-remove">SEÇÃO DE REMOÇÃO/ALTERAÇÃO DO PRODUTO</p>-->
-<!--    </div>-->
-<!--    <hr>-->
-<!--    <form method="post" action="{% url 'app_produtos:remover_alimento' %}">-->
-<!--        {% csrf_token %}-->
-<!--        <label for="{{ form.nome.id_for_label }}" class="remove">NOME DO ALIMENTO A SER REMOVIDO: </label>-->
-<!--        {{ form.nome }}-->
-<!--        <button type="submit" class="remover-alimento" onclick="mostrarMensagemRemover('removido com sucesso')">Remover Alimento</button>-->
-<!--    </form>-->
+
+    <hr>
+    <div class="fundo-paragrafo">
+        <p>SEÇÃO DE REMOÇÃO/ALTERAÇÃO DO PRODUTO</p>
+    </div>
+    <hr>
+    <div class="container-remocao">
+        <form method="post" action="{% url 'app_produtos:remover_alimento' %}">
+        {% csrf_token %}
+        <label for="{{ form.nome.id_for_label }}" class="remove">NOME DO ALIMENTO A SER REMOVIDO: </label>
+        {{ form.nome }}
+        <button type="submit" class="remover-alimento" onclick="mostrarMensagemRemover('removido com sucesso')">Remover Alimento</button>
+    </form>
+    </div>
+
 
 </body>
 

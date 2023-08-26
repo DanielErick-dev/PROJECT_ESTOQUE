@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Alimentos
 from .forms import AlimentoForm, PedidoForm, PagamentoForm, RemoverAlimentoForm
 from django.http import Http404
+from django.db import Error
 pedidos = []
 def landing_page(request):
     return render(request, 'landing_page.html')
@@ -33,8 +34,24 @@ def adicionar_alimento(request):
 
             alimento = form.save(commit=False)
             alimento.nome = nome_produto
-            alimento.save()
-            print('novo objeto salvo no banco de dados')
+            igualdade = False
+            try:
+                alimentos = Alimentos.objects.filter(nome=nome_produto)
+
+                if len(alimentos) > 0:
+                    igualdade = True
+                    print('o produto em questão já existe no banco de dados')
+            except Error:
+                print('erro para acessar o banco de dados')
+
+            if igualdade is False:
+                alimento.save()
+                print('novo objeto salvo no banco de dados')
+
+
+
+
+
             return redirect('app_produtos:exibir_estoque')
     else:
         form = AlimentoForm()
