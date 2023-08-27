@@ -13,7 +13,8 @@ function mostrarMensagemRemover(mensagem)  {
 
 function mostrarMensagemAdicionar(mensagem)  {
     if (validacao_ok) {
-        consele.log('testando validação')
+        console.log('testando validação')
+        console.log(validacao_ok)
         var mensagemElement = document.createElement('div');
         mensagemElement.className = 'mensagem-adicionado';
         mensagemElement.textContent = mensagem;

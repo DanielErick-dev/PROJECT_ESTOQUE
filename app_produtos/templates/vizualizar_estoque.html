@@ -55,25 +55,10 @@
             <script>
                 var validacao_ok = {{ validacao_ok|yesno:"true,false" }};
                 console.log(validacao_ok);
-                function mostrarMensagemAdicionar(mensagem)  {
-                if (validacao_ok) {
-                    console.log('testando validação')
-                    var mensagemElement = document.createElement('div');
-                    mensagemElement.className = 'mensagem-adicionado';
-                    mensagemElement.textContent = mensagem;
-                    document.body.appendChild(mensagemElement);
-
-
-                    setTimeout(function() {
-                        document.body.removeChild(mensagemElement);
-                   }, 9000);
-                } else {
-                    console.log('validação não foi executada corretamente')
-                }
-            }
             </script>
             <button type="submit" class="adicionar_novo_alimento" onclick="mostrarMensagemAdicionar('Produto Criado Com Sucesso')">ADICIONAR NOVO ALIMENTO</button>
         </form>
+
     </div>
 
 
@@ -95,6 +80,9 @@
         <div class="line">
 
         </div>
+    </div>
+    <div class="validar">
+        <p>resultado validação: {{ validacao_ok }}</p>
     </div>
 
 
