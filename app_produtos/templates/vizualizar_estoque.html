@@ -53,7 +53,7 @@
             </div>
             <br>
             <script>
-                var validacao_ok = {{ validacao_ok|yesno:"true,false" }};
+                var validacao_ok = {{ validacao_ok|lower }};
                 console.log(validacao_ok);
             </script>
             <button type="submit" class="adicionar_novo_alimento" onclick="mostrarMensagemAdicionar('Produto Criado Com Sucesso')">ADICIONAR NOVO ALIMENTO</button>
@@ -81,9 +81,9 @@
 
         </div>
     </div>
-    <div class="validar">
-        <p>resultado validação: {{ validacao_ok }}</p>
-    </div>
+    <p>
+        <a href="{% url 'app_produtos:resultado_nao_esperado' %}">Resultado Não Esperado</a>
+    </p>
 
 
 </body>

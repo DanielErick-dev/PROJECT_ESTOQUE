@@ -1,0 +1,15 @@
+.mensagem-adicionado{
+    position: fixed;
+    bottom: 600px;
+    right: 20px;
+    background-color: #00FF7F;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}

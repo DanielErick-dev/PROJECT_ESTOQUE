@@ -18,8 +18,9 @@ def exibir_estoque(request):
     alimentos = Alimentos.objects.all()
     ALIMENTOS = sorted(alimentos, key=lambda x: x.nome)
     form = AlimentoForm()
+    validacao_ok = request.session.get('validacao_ok', False)
     dicionario_alimentos = {
-        'alimentos': ALIMENTOS, 'form': form
+        'alimentos': ALIMENTOS, 'form': form, 'validacao_ok': validacao_ok
     }
 
     return render(request, 'vizualizar_estoque.html', dicionario_alimentos)
@@ -27,6 +28,7 @@ def exibir_estoque(request):
 
 def adicionar_alimento(request):
     validacao_ok = False
+    request.session.delete()
     if request.method == 'POST':
         form = AlimentoForm(request.POST)
         if form.is_valid():
@@ -52,13 +54,14 @@ def adicionar_alimento(request):
                 validacao_ok = True
                 print(validacao_ok)
 
-
-
-
+            request.session['validacao_ok'] = validacao_ok
 
             return redirect('app_produtos:exibir_estoque')
+
     else:
         form = AlimentoForm()
+    validacao_ok = request.session.get('validacao_ok', False)
+
     return render(request, 'vizualizar_estoque.html', {'form': form, 'validacao_ok': validacao_ok})
 def remover_alimento(request):
     if request.method == 'POST':
@@ -106,7 +109,7 @@ def resultado_nao_esperado(request):
     request.session.flush()
 
 
-    return render(request, 'resultado_nao_esperado.html', {'mensagem': mensagem, 'lista': lista})
+    return render(request, 'resultado_nao_esperado.html', {'mensagem': mensagem})
 
 def adicionar_pedido(request):
     if request.method == 'POST':

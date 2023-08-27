@@ -313,15 +313,4 @@
 
 }
 
-.validar{
-    width: 100%;
-    height: 20%;
-    background: red;
-}
-
-.validar p{
-    background: red;
-    color: black;
-    font-size: 20px;
-}
 
